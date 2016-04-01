@@ -3,7 +3,7 @@
 import dbus
 
 def main():
-	bus = dbus.SessionBus()
+	bus = dbus.SystemBus()
 
 	remote_object = bus.get_object("com.example.SampleService", "/SomeObject")
 

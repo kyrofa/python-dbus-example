@@ -18,9 +18,9 @@ class SomeObject(dbus.service.Object):
 if __name__ == '__main__':
 	dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
 
-	session_bus = dbus.SessionBus()
-	name = dbus.service.BusName("com.example.SampleService", session_bus)
-	object = SomeObject(session_bus, '/SomeObject')
+	bus = dbus.SystemBus()
+	name = dbus.service.BusName("com.example.SampleService", bus)
+	object = SomeObject(bus, '/SomeObject')
 
 	mainloop = GLib.MainLoop()
 	mainloop.run()
