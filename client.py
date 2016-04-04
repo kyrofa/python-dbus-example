@@ -4,7 +4,7 @@ import dbus
 import sys
 
 def main():
-	bus = dbus.SessionBus()
+	bus = dbus.SystemBus()
 	remote_object = bus.get_object("com.example.SampleService", "/SomeObject")
 	iface = dbus.Interface(remote_object, "com.example.SampleInterface")
 	argBytes = bytes(int(arg, 16) for arg in sys.argv[1:])
