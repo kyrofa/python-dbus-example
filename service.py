@@ -14,6 +14,12 @@ class SomeObject(dbus.service.Object):
 		flippedBytes = byte_ops.invert(justBytes)
 		return self.bytes2ay(flippedBytes)
 
+	@dbus.service.method("com.example.SampleInterface", in_signature='ay', out_signature='ay')
+	def explode(self, payload):
+		justBytes = bytes(0 + x for x in payload)
+		explodedBytes = byte_ops.explode(justBytes)
+		return self.bytes2ay(explodedBytes)
+
 	def bytes2ay(self, someBytes):
 		return [dbus.Byte(x) for x in someBytes]
 		
